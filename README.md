@@ -1,6 +1,6 @@
 my settings: python run_app.py --host=192.168.1.7 -p -t 10 -s 22
 
-
+If only I had time to figure out how to edit the axes, labels, and such so that the database-backed version of the plot looked like this: https://plot.ly/~griffincalme/3/
 
 # Raspberry Pi DHT sensor website app
 This app lets you to view your DHT readouts online in a form of interactive plot. 
