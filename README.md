@@ -1,3 +1,7 @@
+my settings: python run_app.py --host=192.168.1.7 -p -t 10 -s 22
+
+
+
 # Raspberry Pi DHT sensor website app
 This app lets you to view your DHT readouts online in a form of interactive plot. 
 
