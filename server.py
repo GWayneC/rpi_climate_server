@@ -40,7 +40,7 @@ def dump(count=None):
 
 @app.route('/')
 def index():
-    return render_template('climate_graph.html')
+    return render_template('templates/climate_graph.html')
 
 
 @app.route('/last')
