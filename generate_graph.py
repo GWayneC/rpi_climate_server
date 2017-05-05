@@ -25,7 +25,7 @@ def generate_graph():
     data = [temperature_F_trace, humidity_trace]
 
 
-    layout = Layout(title='Apartment Temperature and Humidity', yaxis=dict(title='Humidity (%), Temperature (F)'))
+    layout = Layout(title='Home Temperature and Humidity', yaxis=dict(title='Humidity (%), Temperature (F)'))
 
 
     fig = Figure(data=data, layout=layout)
