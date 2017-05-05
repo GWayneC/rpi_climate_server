@@ -13,7 +13,7 @@ Sample:
 
 (Viewing this plot may require you to push the autoscale button on plot.)
 
-###Setup
+### Setup
 - Raspberry PI
 - DHT11 sensor (DHT22 and DHT2303 are also supported, [also see wiring](http://docs.gadgetkeeper.com/pages/viewpage.action?pageId=7700673)) 
 - interwebz connection
@@ -23,7 +23,7 @@ Sample:
 - Adafruit DHT driver
 - plotly 
 
-##Dependencies
+## Dependencies
 For web server and database dependencies requirements run:
 ```
 sudo pip install -r requirements.txt
@@ -34,23 +34,23 @@ The driver is accessible here:
 https://github.com/adafruit/Adafruit_Python_DHT 
 Follow the installation instructions in the link above.
 
-##Installation
+## Installation
 
 This projects runs purely as python app. As long as all the requirements are met, you don't have to install anything.
 
-##Running the project
+## Running the project
 If you are not interested in further options just run:
 ```
 python run_app.py
 ```
 Website will run defaultly on host `0.0.0.0` and port `8080`.
 
-##Additional options of running and project files
+## Additional options of running and project files
 
-###model.py
+### model.py
 This file contains sql model of the database where all sensor data will be saved. Running this script will result in creating file `dht_database.db` in folder where `model.py` is.
 
-###record_data.py and recording data to database
+### record_data.py and recording data to database
 Contains class responsible for acquiring data input and saving it in database. Can be runned separately as script. If runned, will loop endlessly and save sensor data to database with given interval.
 
 ```
@@ -67,7 +67,7 @@ Options:
 ```
 
 
-###server.py, template/index.html and the web service
+### server.py, template/index.html and the web service
 `server.py` contains flask server with web-service. The web-service hosts restful api.
 
 Method | Endpoint | Usage | Returns
@@ -101,7 +101,7 @@ Options:
 ```
 
 
-###run_app.py
+### run_app.py
 This script combines run of `service.py` and `record_data.py`.
 The recording class from `record_data.py` runs as a separate thread.
 ```
