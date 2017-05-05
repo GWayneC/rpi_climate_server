@@ -39,7 +39,7 @@ class SensorDatabase(threading.Thread):
             one_minute = 60
             sleep_time = self.minutes_interval * one_minute
             if self.print_to_stdout:
-                print data
+                print(data)
             time.sleep(sleep_time)
 
 if __name__ == "__main__":
