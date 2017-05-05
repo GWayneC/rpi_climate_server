@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from model import DHTRecord
 import json
 from optparse import OptionParser
-from generate_graph import generate_graph
+
 
 app = Flask(__name__)
 
@@ -32,7 +32,7 @@ def get_records(count=None):
 
 @app.route('/data/')
 @app.route('/data/<int:count>')
-def hello(count=None):
+def dump(count=None):
     data_array = get_records(count)
     res = json.dumps(data_array)
     return res
@@ -40,7 +40,6 @@ def hello(count=None):
 
 @app.route('/')
 def index():
-    generate_graph()
     return render_template('climate_graph.html')
 
 
