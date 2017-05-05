@@ -11,6 +11,7 @@ script_path = os.path.dirname(os.path.abspath(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+script_path+'/dht_database.db'
 db = SQLAlchemy(app)
 
+
 class DHTRecord(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     humidity = db.Column(db.Integer())
