@@ -1,7 +1,7 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 import sqlalchemy
-import sqlite3
+#import sqlite3
 import json
 import os
 
