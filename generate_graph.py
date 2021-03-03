@@ -4,32 +4,38 @@ from plotly.graph_objs import Scatter, Layout, Figure
 
 
 def generate_graph():
-    conn = sqlite3.connect('dht_database.db')
+    conn = sqlite3.connect('dht_database3.db')
     cursor = conn.cursor()
 
-    cursor.execute('SELECT * from dht_record')
+    cursor.execute('SELECT * from dht_record where  wine_humidity > 0') 
     database_list = cursor.fetchall()
     conn.close()
 
-    humidity_list = [round(i[1],1) for i in database_list]
-    temperature_list = [round(i[2],1) for i in database_list]
-    date_list = [i[3] for i in database_list]
 
-    temperature_F_list = [round((i * (9.0/5.0)) + 32, 1) for i in temperature_list]
+    humidity_list = [i[1] for i in database_list]
+    temperature_list = [i[2] for i in database_list]
+    wine_humidity_list = [i[3] for i in database_list]
+    wine_temperature_list = [i[4] for i in database_list]
+    date_list = [i[5] for i in database_list]
 
+    #temperature_F_list = [round((i * (9.0/5.0)) + 32, 1) for i in temperature_list]
+    #wine_temperature_F_list = [round((i * (9.0/5.0)) + 32, 1) for i in temperature_list]
 
     #temperature_trace = Scatter(x=date_list, y=temperature_list, name='Temperature (C)')
-    temperature_F_trace = Scatter(x=date_list, y=temperature_F_list, name='Temperature (F)')
-    humidity_trace = Scatter(x=date_list, y=humidity_list, name='Humidity (%)', yaxis='Date')
+    temperature_trace = Scatter(x=date_list, y=temperature_list, name='Temperature (F)')
+    wine_temperature_trace = Scatter(x=date_list, y=wine_temperature_list, name='Wine Temperature (F)')
+    humidity_trace = Scatter(x=date_list, y=humidity_list, name='Humidity (%)')
+    wine_humidity_trace = Scatter(x=date_list, y=wine_humidity_list, name='Wine Humidity (%)')
 
-    data = [temperature_F_trace, humidity_trace]
+    data = [temperature_trace, humidity_trace,wine_temperature_trace, wine_humidity_trace]
 
-
-    layout = Layout(title='Home Temperature and Humidity', yaxis=dict(title='Humidity (%), Temperature (F)'))
+    layout = Layout(title='Wine Room Temperature and Humidity', yaxis=dict(title='Humidity (%), Temperature (F)'))
 
 
     fig = Figure(data=data, layout=layout)
-    plot_url = plotly.offline.plot(fig, filename='templates/climate_graph.html', auto_open=False)
+    print('generating graph with : {0}'.format(data))
+    fig.write_html("templates/index.html")
+    #plot_url = plotly.offline.plot(fig, filename='templates/climate_graph.html', auto_open=False)
 
 
 
