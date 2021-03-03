@@ -37,11 +37,13 @@ def dump(count=None):
     res = json.dumps(data_array)
     return res
 
-
 @app.route('/')
 def index():
-    return render_template('templates/climate_graph.html')
+    return render_template('index.html')
 
+@app.errorhandler(Exception)
+def exception_handler(error):
+    return "!!!!"  + repr(error)
 
 @app.route('/last')
 def last():
